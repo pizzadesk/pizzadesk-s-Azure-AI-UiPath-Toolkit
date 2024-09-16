@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop" ToolsVersion="Current">
+	<PropertyGroup>
+		<TargetFrameworks>net461;net6.0-windows</TargetFrameworks>
+		<AssemblyName>pizzadesk.AzureAIUiPathToolkit.PerformSTTFromFile</AssemblyName>
+		<RootNamespace>Windows.PerformSTTFromFile</RootNamespace>
+		<UseWpf>true</UseWpf>
+		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+		<Title>Azure AI UiPath Toolkit - Perform STT from WAV file</Title>
+		<Description>This library provides speech-to-text from WAV file using Azure AI Speech.</Description>
+		<Authors>Sergejs Babikovs (pizzadesk)</Authors>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>1.1.0</Version>
+		<Product>pizzadesk's Azure AI UiPath Toolkit</Product>
+		<RuntimeIdentifiers>win;win-x64;win-x86;</RuntimeIdentifiers>
+		<Configurations>Release;Release_v2</Configurations>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x64'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|x64'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_v2|net461|AnyCPU'">
+	  <Optimize>True</Optimize>
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_v2|net6.0-windows|AnyCPU'">
+	  <Optimize>True</Optimize>
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
+	  <Optimize>True</Optimize>
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|AnyCPU'">
+	  <Optimize>True</Optimize>
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
+		<Reference Include="System" />
+		<Reference Include="System.Activities" />
+		<Reference Include="System.Activities.Core.Presentation" />
+		<Reference Include="System.Activities.Presentation" />
+		<Reference Include="System.ComponentModel.Composition" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Xaml" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Net.Http" />
+		<Reference Include="System.Xml" />
+		<Reference Include="WindowsBase" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+		<PackageReference Include="UiPath.Workflow.Runtime" Version="6.0.0-20220401-03" PrivateAssets="All" />
+		<PackageReference Include="UiPath.Workflow" Version="6.0.0-20220401-03" PrivateAssets="All" />
+		<PackageReference Include="System.Activities.Core.Presentation" Version="6.0.0-20220318.2" PrivateAssets="All" />
+		<PackageReference Include="System.Activities.Metadata" Version="6.0.0-20220318.2" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Graphics\stt_project_icon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.30.0" />
+	</ItemGroup>
+</Project>

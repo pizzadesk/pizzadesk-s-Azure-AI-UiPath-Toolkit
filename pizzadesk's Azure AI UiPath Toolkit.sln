@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Windows.PerformSTTFromFile", "Windows_PerformSTTFromFile\Windows.PerformSTTFromFile.csproj", "{35654B5A-AE76-47F5-94CB-CC2B1C13F161}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legacy.PerformSTTFromFile", "Legacy_PerformSTTFromFile\Legacy.PerformSTTFromFile.csproj", "{A9D153CC-9BD4-410B-B1AA-B5FE86D611F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35654B5A-AE76-47F5-94CB-CC2B1C13F161}.Release|Any CPU.ActiveCfg = Release_v2|Any CPU
+		{35654B5A-AE76-47F5-94CB-CC2B1C13F161}.Release|Any CPU.Build.0 = Release_v2|Any CPU
+		{35654B5A-AE76-47F5-94CB-CC2B1C13F161}.Release|x64.ActiveCfg = Release_v2|Any CPU
+		{35654B5A-AE76-47F5-94CB-CC2B1C13F161}.Release|x64.Build.0 = Release_v2|Any CPU
+		{A9D153CC-9BD4-410B-B1AA-B5FE86D611F2}.Release|Any CPU.ActiveCfg = Release_v2|x64
+		{A9D153CC-9BD4-410B-B1AA-B5FE86D611F2}.Release|Any CPU.Build.0 = Release_v2|x64
+		{A9D153CC-9BD4-410B-B1AA-B5FE86D611F2}.Release|x64.ActiveCfg = Release_v2|x64
+		{A9D153CC-9BD4-410B-B1AA-B5FE86D611F2}.Release|x64.Build.0 = Release_v2|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8977F8CC-E457-435E-A896-D75904068EEF}
+	EndGlobalSection
+EndGlobal

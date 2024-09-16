@@ -1,0 +1,62 @@
+﻿<sap:ActivityDesigner x:Class="Legacy.PerformSTTFromFile.ActivityDesignData"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation">
+
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <sapc:ArgumentToExpressionConverter x:Key="ArgumentToExpressionConverter" />
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+
+    <DockPanel Width="300">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="210" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Subscription Key" />
+            <sapv:ExpressionTextBox Grid.Row="0" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
+                                    HintText="Speech Service subscription key" 
+                                    Expression="{Binding Path=ModelItem.SubscriptionKey, Converter={StaticResource ArgumentToExpressionConverter}, 
+                                    ConverterParameter=In, Mode=TwoWay}" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Service Region" />
+            <sapv:ExpressionTextBox Grid.Row="1" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
+                                    HintText="Service region, example northeurope" 
+                                    Expression="{Binding Path=ModelItem.ServiceRegion, Converter={StaticResource ArgumentToExpressionConverter}, 
+                                    ConverterParameter=In, Mode=TwoWay}" />
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Language/Locale" />
+            <sapv:ExpressionTextBox Grid.Row="2" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
+                                    HintText="Locale aka language (en-US etc)" 
+                                    Expression="{Binding Path=ModelItem.Locale, Converter={StaticResource ArgumentToExpressionConverter}, 
+                                    ConverterParameter=In, Mode=TwoWay}" />
+            
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Audio File Path" />
+            <sapv:ExpressionTextBox Grid.Row="3" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
+                                    HintText="WAV file path" 
+                                    Expression="{Binding Path=ModelItem.AudioFilePath, Converter={StaticResource ArgumentToExpressionConverter}, 
+                                    ConverterParameter=In, Mode=TwoWay}" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="STT Result" />
+            <sapv:ExpressionTextBox Grid.Row="4" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
+                                    HintText="Result" UseLocationExpression="True" 
+                                    Expression="{Binding Path=ModelItem.Result, Converter={StaticResource ArgumentToExpressionConverter}, 
+                                    ConverterParameter=Out, Mode=TwoWay}" />
+            
+        </Grid>
+    </DockPanel>
+</sap:ActivityDesigner>
