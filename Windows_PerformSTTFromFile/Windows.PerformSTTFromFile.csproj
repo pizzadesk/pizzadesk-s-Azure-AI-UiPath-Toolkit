@@ -1,44 +1,67 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop" ToolsVersion="Current">
 	<PropertyGroup>
 		<TargetFrameworks>net461;net6.0-windows</TargetFrameworks>
-		<AssemblyName>pizzadesk.AzureAIUiPathToolkit.PerformSTTFromFile</AssemblyName>
+		<OutputType>Library</OutputType>
+		<AssemblyName>pizzadesk's.AzureAI-UiPath.Toolkit</AssemblyName>
 		<RootNamespace>Windows.PerformSTTFromFile</RootNamespace>
 		<UseWpf>true</UseWpf>
-		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
-		<Title>Azure AI UiPath Toolkit - Perform STT from WAV file</Title>
-		<Description>This library provides speech-to-text from WAV file using Azure AI Speech.</Description>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<Title>pizzadesk's Azure AI UiPath Toolkit</Title>
+		<Description>This library provides Azure AI SDK-based custom activities for UiPath, including Speech-To-Text and others.</Description>
 		<Authors>Sergejs Babikovs (pizzadesk)</Authors>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>1.1.0</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>1.5.0</Version>
 		<Product>pizzadesk's Azure AI UiPath Toolkit</Product>
-		<RuntimeIdentifiers>win;win-x64;win-x86;</RuntimeIdentifiers>
+		<RuntimeIdentifiers>win;win-x64;win-x86</RuntimeIdentifiers>
 		<Configurations>Release;Release_v2</Configurations>
+		<PackageProjectUrl></PackageProjectUrl>
+		<RepositoryUrl>https://github.com/pizzadesk/pizzadesk-s-Azure-AI-UiPath-Toolkit.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x64'">
-		<DebugType>none</DebugType>
+	<PropertyGroup>
+		<CognitiveServicesSpeechNativeDll>
+			$(UserProfile)\.nuget\packages\microsoft.cognitiveservices.speech\1.30.0\runtimes\win-x64\native\Microsoft.CognitiveServices.Speech.core.dll
+		</CognitiveServicesSpeechNativeDll>
+		<ApplicationIcon>Graphics\stt_project_icon.ico</ApplicationIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Copyright>Sergejs Babikovs (pizzadesk)</Copyright>
+		<PackageTags>UiPath;Azure AI;Azure;SDK</PackageTags>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|x64'">
-		<DebugType>none</DebugType>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_v2|net461|AnyCPU'">
-	  <Optimize>True</Optimize>
-	  <DebugType>none</DebugType>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_v2|net6.0-windows|AnyCPU'">
-	  <Optimize>True</Optimize>
-	  <DebugType>none</DebugType>
-	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
-	  <Optimize>True</Optimize>
-	  <DebugType>none</DebugType>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|AnyCPU'">
-	  <Optimize>True</Optimize>
 	  <DebugType>none</DebugType>
 	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|AnyCPU'">
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_v2|net461|AnyCPU'">
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_v2|net6.0-windows|AnyCPU'">
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<!-- Include the missing DLL -->
+	<ItemGroup>
+		<None Update="$(CognitiveServicesSpeechNativeDll)">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Pack>true</Pack>
+			<PackagePath>runtimes\win-x64\native\</PackagePath>
+		</None>
+		<None Update="$(UserProfile)\.nuget\packages\microsoft.cognitiveservices.speech\1.30.0\runtimes\win-x86\native\Microsoft.CognitiveServices.Speech.core.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Pack>true</Pack>
+			<PackagePath>runtimes\win-x86\native\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<!-- Framework-specific dependencies -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net461'">
 		<Reference Include="PresentationCore" />
 		<Reference Include="PresentationFramework" />
 		<Reference Include="System" />
@@ -57,18 +80,50 @@
 		<Reference Include="WindowsBase" />
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
-		<PackageReference Include="UiPath.Workflow.Runtime" Version="6.0.0-20220401-03" PrivateAssets="All" />
-		<PackageReference Include="UiPath.Workflow" Version="6.0.0-20220401-03" PrivateAssets="All" />
-		<PackageReference Include="System.Activities.Core.Presentation" Version="6.0.0-20220318.2" PrivateAssets="All" />
-		<PackageReference Include="System.Activities.Metadata" Version="6.0.0-20220318.2" PrivateAssets="All" />
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+		<PackageReference Include="UiPath.Workflow.Runtime" Version="6.0.0-20220909-01" PrivateAssets="All" />
+		<PackageReference Include="UiPath.Workflow" Version="6.0.0-20220909-01" PrivateAssets="All" />
+		<PackageReference Include="System.Activities.Core.Presentation" Version="6.0.0-20220831.1" PrivateAssets="All" />
+		<PackageReference Include="System.Activities.Metadata" Version="6.0.0-20220831.1" PrivateAssets="All" />
 	</ItemGroup>
 
+	<!-- Ensure Cognitive Services dependency -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.30.0" />
+	</ItemGroup>
+
+	<!-- Include additional content -->
 	<ItemGroup>
 		<Content Include="Graphics\stt_project_icon.ico" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\LICENSE.txt">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<!-- Auto-generated settings -->
+	<ItemGroup>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>true</DesignTimeSharedInput>
+			<AutoGen>true</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.30.0" />
+		<None Update="Graphics\STT_project_package_icon.png">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+		</None>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
 	</ItemGroup>
 </Project>

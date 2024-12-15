@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Windows.PerformSTTFromFile
 {
-    [Category("pizzadesk's Azure AI UiPath Toolkit.Perform STT From WAV File")]
-    [DisplayName("Perform Speech-to-text from WAV file")]
-    [Description("Leverage Azure AI Speech Resource to transcribe speech to text from a WAV file.")]
+    [Category("pizzadesk's Azure AI UiPath Toolkit.Perform Azure AI Speech To Text From WAV File")]
+    [DisplayName("Perform Speech-To-Text from WAV file")]
+    [Description("Leverage Azure AI Speech Resource to transcribe speech to text from a WAV file")]
     public class SpeechToTextActivity : AsyncCodeActivity
     {
         // Define input arguments with RequiredArgument attribute
@@ -23,7 +23,7 @@ namespace Windows.PerformSTTFromFile
 
         [Category("Input")]
         [DisplayName("ServiceRegion")]
-        [Description("Region for the Azure Speech Resource")]
+        [Description("Region for the Azure Speech Resource (e.g. northeurope)")]
         [RequiredArgument]
         public InArgument<string> ServiceRegion { get; set; }
 

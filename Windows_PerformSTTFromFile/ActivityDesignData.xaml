@@ -35,13 +35,13 @@
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Service Region" />
             <sapv:ExpressionTextBox Grid.Row="1" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
-                                    HintText="Service region, example northeurope" 
+                                    HintText="northeurope or other" 
                                     Expression="{Binding Path=ModelItem.ServiceRegion, Converter={StaticResource ArgumentToExpressionConverter}, 
                                     ConverterParameter=In, Mode=TwoWay}" />
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Language/Locale" />
             <sapv:ExpressionTextBox Grid.Row="2" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
-                                    HintText="Locale aka language (en-US etc)" 
+                                    HintText="en-US or other" 
                                     Expression="{Binding Path=ModelItem.Locale, Converter={StaticResource ArgumentToExpressionConverter}, 
                                     ConverterParameter=In, Mode=TwoWay}" />
 
@@ -51,9 +51,9 @@
                                     Expression="{Binding Path=ModelItem.AudioFilePath, Converter={StaticResource ArgumentToExpressionConverter}, 
                                     ConverterParameter=In, Mode=TwoWay}" />
 
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="STT Result" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Azure STT Result" />
             <sapv:ExpressionTextBox Grid.Row="4" Grid.Column="1" OwnerActivity="{Binding Path=ModelItem}" ExpressionType="s:String" 
-                                    HintText="Result" UseLocationExpression="True" 
+                                    HintText="Transcription output" UseLocationExpression="True" 
                                     Expression="{Binding Path=ModelItem.Result, Converter={StaticResource ArgumentToExpressionConverter}, 
                                     ConverterParameter=Out, Mode=TwoWay}" />
 
