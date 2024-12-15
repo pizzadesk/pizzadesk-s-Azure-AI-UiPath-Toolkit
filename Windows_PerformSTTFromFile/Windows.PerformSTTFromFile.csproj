@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net461;net6.0-windows</TargetFrameworks>
 		<OutputType>Library</OutputType>
-		<AssemblyName>pizzadesk's.AzureAI-UiPath.Toolkit</AssemblyName>
+		<AssemblyName>pizzadesks.AzureAI-UiPath.Toolkit</AssemblyName>
 		<RootNamespace>Windows.PerformSTTFromFile</RootNamespace>
 		<UseWpf>true</UseWpf>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
