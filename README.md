@@ -2,13 +2,13 @@
 
 ## Overview
 
-This solution contains custom UiPath activities for both Windows-Legacy and Windows for performing Speech-to-Text (STT) operations and access other Azure AI functionality using the Microsoft Cognitive Services Speech SDK.
+This solution contains custom UiPath activities for Windows framework for the use of Azure AI SDK, including but not limited to Speech-to-Text (STT) operations, and other Azure AI functionality using the Microsoft Cognitive Services Speech SDK.
 
 ## Components
 
-### 1. **Legacy_PerformSTTFromFile and Windows_PerformSTTFromFile**
+### 1. **Windows_PerformSTTFromFile**
 
-These double runtime projects focus on the the `SpeechToTextActivity` class, which leverages the Microsoft Cognitive Services Speech SDK to perform STT on a provided WAV file.
+This project focuses on the the `SpeechToTextActivity` class, which leverages the Microsoft Cognitive Services Speech SDK to perform STT on a provided WAV file.
 
 #### Key Methods:
 - **BeginExecute**: Starts the asynchronous speech recognition operation. It retrieves input arguments, validates them, and initiates the speech recognition task using `TaskCompletionSource<T>` to ensure compatibility with UiPath's `AsyncCodeActivity`.
@@ -20,7 +20,7 @@ These double runtime projects focus on the the `SpeechToTextActivity` class, whi
 
 ### Prerequisites
 - Visual Studio (or compatible IDE)
-- Microsoft Cognitive Services Speech SDK (version 1.30.0 or newer)
+- Microsoft Cognitive Services Speech SDK (version 1.30.0 or newer) - comes as built-in dependency
 - .NET Framework 4.6.1 or newer / .NET 6.0-windows
 - A valid Azure subscription with access to Azure Speech Services
 
